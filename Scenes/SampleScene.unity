@@ -368,15 +368,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 2109666861}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f6af232cd2269847932525cf4d9c097, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a0ce692610f819438e49a393fbe297c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  node: {fileID: 776824699687911177, guid: 6b81a0b56e79ced438084eb3178fc3cd, type: 3}
+  node: {fileID: 776824699687911177, guid: 95844c1351981c64991216e12fa83118, type: 3}
   nodeSizeX: 10
   nodeSizeY: 10
   nodeBuildPosX: 0
   nodeBuildPosY: 0
   buildNodes: 0
+  newNodeID: 0
   existingNodes: []
 --- !u!4 &2109666863
 Transform:

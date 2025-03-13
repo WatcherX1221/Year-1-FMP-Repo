@@ -8,7 +8,6 @@ public class Node : MonoBehaviour
     public List<GameObject> neighboringNodes;
     public bool findNeighboringNodes = false;
     NodeMapBuilder nodeMapBuilder;
-    public int nodeListID;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,9 +20,10 @@ public class Node : MonoBehaviour
     {
         if (findNeighboringNodes == true)
         {
-            neighboringNodes.Add
-
-                nodeMapBuilder.existingNodes.Add()
+            neighboringNodes.Add(nodeMapBuilder.existingNodes[nodeID - 10]);
+            neighboringNodes.Add(nodeMapBuilder.existingNodes[nodeID - 1]);
+            neighboringNodes.Add(nodeMapBuilder.existingNodes[nodeID + 1]);
+            neighboringNodes.Add(nodeMapBuilder.existingNodes[nodeID + 10]);
         }
     }
 }
