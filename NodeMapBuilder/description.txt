@@ -1,0 +1,1 @@
+This here is built to make creating a node map easier to make it faster to build in the long run.
