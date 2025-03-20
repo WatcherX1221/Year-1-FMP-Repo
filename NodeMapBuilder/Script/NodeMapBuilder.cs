@@ -12,13 +12,17 @@ public class NodeMapBuilder : MonoBehaviour
     public int nodeBuildPosY;
     public bool buildNodes = false;
     public int newNodeID;
-    public List<GameObject> existingNodes;
+    bool hasFinishedBuilding;
+    public List<GameObject> existingNodes = new List<GameObject>();
+    Node nodeScript;
     // Start is called before the first frame update
     void Start()
     {
         buildNodes = false;
+        hasFinishedBuilding = false;
         nodeBuildPosX = 0;
         nodeBuildPosY = 0;
+        
     }
 
     // Update is called once per frame
@@ -35,16 +39,46 @@ public class NodeMapBuilder : MonoBehaviour
             newNodeID += 1;
             nodeBuildPosX += 1;
             existingNodes.Add(newNode);
+
+
             if (nodeBuildPosX == nodeSizeX && nodeBuildPosY == -nodeSizeY + 1)
             {
                 buildNodes = false;
+
+                if (newNodeID == (nodeSizeX * nodeSizeY))
+                {
+                    hasFinishedBuilding = true;
+                }
+
+
+                if (hasFinishedBuilding)
+                {
+                    for (int i = 0; i < existingNodes.Count; i++)
+                    {
+                        existingNodes[i].GetComponent<Node>().GetNeighbours();
+                    }
+
+                }
+
+
             }
             if (nodeBuildPosX == nodeSizeX)
             {
                 nodeBuildPosY -= 1;
                 nodeBuildPosX = 0;
             }
+
+           
+
         }
+
         
+        
+
+
+
+
     }
+
+   
 }

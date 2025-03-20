@@ -6,24 +6,58 @@ public class Node : MonoBehaviour
 {
     public int nodeID;
     public List<GameObject> neighboringNodes;
-    public bool findNeighboringNodes = false;
     NodeMapBuilder nodeMapBuilder;
+    GameObject nodeMapBuild;
+    public bool isValid;
+    public bool hasCheckedValid;
     // Start is called before the first frame update
     void Start()
     {
-        findNeighboringNodes = true;
-        nodeMapBuilder = GetComponent<NodeMapBuilder>();
+        nodeMapBuild = GameObject.FindGameObjectWithTag("NodeMapBuilder");
+        nodeMapBuilder = nodeMapBuild.GetComponent<NodeMapBuilder>();
+        isValid = true;
+        hasCheckedValid = false;
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        if (findNeighboringNodes == true)
         {
-            neighboringNodes.Add(nodeMapBuilder.existingNodes[nodeID - 10]);
-            neighboringNodes.Add(nodeMapBuilder.existingNodes[nodeID - 1]);
-            neighboringNodes.Add(nodeMapBuilder.existingNodes[nodeID + 1]);
-            neighboringNodes.Add(nodeMapBuilder.existingNodes[nodeID + 10]);
+            if (hasCheckedValid == false)
+            {
+                if (collision.collider.tag == "Solid")
+                {
+                    isValid = false;
+                }
+                hasCheckedValid = true;
+            }
+
+
         }
     }
+
+    public void GetNeighbours()
+    {
+
+        nodeMapBuild = GameObject.FindGameObjectWithTag("NodeMapBuilder");
+        nodeMapBuilder = nodeMapBuild.GetComponent<NodeMapBuilder>();
+
+        for (int i = 0; i < nodeMapBuilder.existingNodes.Count; i++)
+        {
+            Vector2 currentNodePos = nodeMapBuilder.existingNodes[i].transform.position;
+            Vector2 adiacentTop = new Vector2(transform.position.x, transform.position.y +1);
+            Vector2 adiacentBottom = new Vector2(transform.position.x, transform.position.y - 1);
+            Vector2 adiacentLeft = new Vector2(transform.position.x - 1, transform.position.y);
+            Vector2 adiacentRight = new Vector2(transform.position.x + 1, transform.position.y);
+
+            if (nodeID != i && currentNodePos == adiacentTop || currentNodePos == adiacentBottom || currentNodePos == adiacentLeft || currentNodePos == adiacentRight)
+            {
+                neighboringNodes.Add(nodeMapBuilder.existingNodes[i]);
+            }
+           
+
+        }
+    }
+
+    
 }
