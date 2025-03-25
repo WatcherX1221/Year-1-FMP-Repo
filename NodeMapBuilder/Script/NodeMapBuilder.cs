@@ -49,36 +49,14 @@ public class NodeMapBuilder : MonoBehaviour
                 {
                     hasFinishedBuilding = true;
                 }
-
-
-                if (hasFinishedBuilding)
-                {
-                    for (int i = 0; i < existingNodes.Count; i++)
-                    {
-                        existingNodes[i].GetComponent<Node>().GetNeighbours();
-                    }
-
-                }
-
-
             }
             if (nodeBuildPosX == nodeSizeX)
             {
                 nodeBuildPosY -= 1;
                 nodeBuildPosX = 0;
             }
-
-           
-
         }
-
-        
-        
-
-
-
-
     }
-
+    
    
 }
