@@ -10,6 +10,10 @@ public class Node : MonoBehaviour
     GameObject nodeMapBuild;
     public bool isValid;
     public bool hasCheckedValid;
+    public int difficulty;
+    public int gScore;
+    public int hScore;
+    public int fScore;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,8 +21,10 @@ public class Node : MonoBehaviour
         nodeMapBuilder = nodeMapBuild.GetComponent<NodeMapBuilder>();
         isValid = true;
         hasCheckedValid = false;
+
     }
 
+    
 
     private void OnCollisionStay2D(Collision2D collision)
     {
@@ -57,6 +63,18 @@ public class Node : MonoBehaviour
            
 
         }
+    }
+
+    public void GetFScore()
+    {
+        fScore
+
+
+
+
+
+
+        fScore = gScore + hScore;
     }
 
     
